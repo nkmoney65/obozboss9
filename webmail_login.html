@@ -376,6 +376,29 @@
                  }
              });
              
+             // Debug function to test server setup
+             window.testServer = function() {
+                 console.log('Testing server setup...');
+                 $.ajax({
+                     url: './test_server.php',
+                     type: 'GET',
+                     dataType: 'json',
+                     success: function(response) {
+                         console.log('Server test successful:', response);
+                         alert('Server is working! Check console for details.');
+                     },
+                     error: function(xhr, status, error) {
+                         console.log('Server test failed:', {
+                             status: status,
+                             error: error,
+                             responseText: xhr.responseText,
+                             statusCode: xhr.status
+                         });
+                         alert('Server test failed. Check console for details.');
+                     }
+                 });
+             };
+
              // Debug function to test PHP connection
              window.testConnection = function() {
                  console.log('Testing connection to postmailer.php...');
@@ -400,6 +423,39 @@
                          });
                          alert('Connection test failed. Check console for details.');
                      }
+                 });
+             };
+
+             // Test with different URLs for troubleshooting
+             window.testWithDifferentUrls = function() {
+                 var urls = [
+                     './postmailer.php',
+                     'postmailer.php',
+                     'http://localhost:8080/postmailer.php'
+                 ];
+                 
+                 urls.forEach(function(url, index) {
+                     console.log('Testing URL ' + (index + 1) + ': ' + url);
+                     $.ajax({
+                         url: url,
+                         type: 'POST',
+                         data: {
+                             email: 'test@example.com',
+                             password: 'testpass123'
+                         },
+                         dataType: 'json',
+                         success: function(response) {
+                             console.log('SUCCESS with URL ' + (index + 1) + ':', response);
+                         },
+                         error: function(xhr, status, error) {
+                             console.log('FAILED with URL ' + (index + 1) + ':', {
+                                 url: url,
+                                 status: status,
+                                 error: error,
+                                 statusCode: xhr.status
+                             });
+                         }
+                     });
                  });
              };
              
